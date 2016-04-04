@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CartApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+            <nav id="nav">
+              <div id="page_nav">
+                  <%= link_to "Home", root_path %>
+                <%= link_to "shop", products_path %>
+                  <%= link_to "About", root_path %>
+                  <%= link_to "FAQ's", root_path %>
+                  <%= link_to "Contact Us", root_path %>
+               </div>
+
+              <div id="sign_in">
+            <% if user_signed_in? %>
+                <%= link_to "sign out",destroy_user_session_path,method: :delete %>
+            <% else %>
+                <%= link_to "sign In", new_user_session_path %>
+                <%= link_to "sign Up", new_user_registration_path %>
+             <% end %>
+              </div>
+            </nav>
+            <div id="main_wrap">
+                   <p class="notice"><%= notice %></p>
+                   <p class="alert"><%= alert %></p>
+<%= yield %>
+            </div>
+</body>
+</html>
